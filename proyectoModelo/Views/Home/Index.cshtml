@@ -1,0 +1,178 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="inicio">
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-pause="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/Img/fondo fallce.jpg" class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="~/Img/fondo reloj.jpg" class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item">
+                <img src="~/Img/fondo.jpg" class="d-block w-100" alt="..." />
+            </div>
+
+            <div class="overlay">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-md-6 offset-md-6 text-center text-md-right ">
+                            <h1>Bienvenidos</h1>
+                            <p class="d-none d-md-block">
+                                Esta en una demo y plantilla diseñada por Eduardo Esteban en la cual se implementan
+                                componentes de bootstrap y estilos css. Elaborada en lenguaje C# y estructura MVC. y Conexion algunos
+                                modulos con base de datos SQL server
+                            </p>
+                            <button class="btn btn-success" data-toggle="modal" data-target="#modalInfo">Modal Info</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Modal de informacion *@
+<div class="modal fade" id="modalInfo" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal de Información</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-check row">
+                        <div class="form-group col">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Seccion de cards *@
+<section id="lenguajes" class="mt-3">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col text-center text-uppercase">
+                <small>Lenguajes Utilizados</small>
+                <h2 class="h6">En Aplicacion</h2>
+
+            </div>
+        </div>
+
+        <div class="row mt-2">
+
+            <div class="col-md-6 col-lg-4 col-12 mt-3">
+                <div class="card">
+                    <img src="~/Img/bootstrap.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Bootstrap</h5>
+                        <div class="badge">
+                            <span class="badge badge-pill badge-warning">Css</span>
+                            <span class="badge badge-pill badge-info">Js</span>
+                        </div>
+                        <p class="card-text">Se ha utilizado este framework de frontend en esta aplicacion Web.</p>
+                        <a href="#" class="btn btn-primary">Listo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 col-12 mt-3">
+                <div class="card">
+                    <img src="~/Img/CSharp.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">C Sharp</h5>
+                        <div class="badge">
+                            <span class="badge badge-pill badge-success">MVC</span>
+                            <span class="badge badge-pill badge-primary">Js</span>
+                        </div>
+                        <p class="card-text">Se ha utilizado este Lenguaje para manejo de backend en esta aplicacion Web.</p>
+                        <a href="#" class="btn btn-success">Listo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4 col-12 mt-3">
+                <div class="card">
+                    <img src="~/Img/sql.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">SQL Server</h5>
+                        <div class="badge">
+                            <span class="badge badge-pill badge-danger">Css</span>
+                            <span class="badge badge-pill badge-info">Js</span>
+                        </div>
+                        <p class="card-text">Se ha utilizado este Lenguaje para almacenamiento de Datos en esta aplicacion Web.</p>
+                        <a href="#" class="btn btn-warning">Listo</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</section>
+
+
+@* Seccion de formulario *@
+<section id="form" class="pt-3 pb-3 ">
+    <div class="container">
+        <div class="row">
+            <div class="col text-uppercase text-center">
+                <small>Registrate</small>
+                <h2 class="h6">Llena el formulario</h2>
+            </div>
+        </div>
+
+        <div class="row pt-2">
+            <div class="col-lg-10 offset-1">
+                <form>
+
+                    <div class="form-row">
+                        <div class="form-group col-12 col-md-6">
+                            <input type="text" class="form-control" placeholder="Nombre">
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            <input type="text" class="form-control" placeholder="Apellidos">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <textarea class="form-control form-control-lg" placeholder="Ingresa tu opinion"></textarea>
+                            <small class="form-text text-muted">Recuerda colocar tu sugerencia</small>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <button type="button" class="btn btn-primary btn-block">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    
+
+</section>
