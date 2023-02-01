@@ -31,5 +31,11 @@ namespace proyectoModelo.Controllers
         {
             return View();
         }
+
+        public ActionResult Vista2()
+        {
+            return View();
+        }
+
     }
 }
