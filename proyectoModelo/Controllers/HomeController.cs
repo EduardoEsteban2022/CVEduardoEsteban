@@ -32,17 +32,16 @@ namespace proyectoModelo.Controllers
             return View();
         }
 
-<<<<<<< HEAD
+
         public ActionResult Vista3()
         {
             return View();
         }
-=======
+
         public ActionResult Vista2()
         {
             return View();
         }
 
->>>>>>> EduardoRama1
     }
 }
