@@ -179,7 +179,7 @@ namespace proyectoModelo.Models
                             nombres = Convert.ToString(dr["NOMBRES"]),
                             apellidos = Convert.ToString(dr["APELLIDOS"]),
                             fechaString = Convert.ToDateTime(dr["FECHA_NACIMIENTO"]).ToString("dd/MM/yyyy"),
-                            sueldo = Convert.ToInt32(dr["SUELDO"])
+                            sueldo = Convert.ToDecimal(dr["SUELDO"])
                         }
                         );
                 }

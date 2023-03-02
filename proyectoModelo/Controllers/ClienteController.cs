@@ -59,6 +59,7 @@ namespace proyectoModelo.Controllers
 
         public ActionResult EditarCliente(int id)
         {
+            ViewBag.msg = TempData["msg"] as String;
 
             ClienteUtility cli = new ClienteUtility();
 
@@ -75,18 +76,15 @@ namespace proyectoModelo.Controllers
 
                     ClienteUtility cliF = new ClienteUtility();
 
-                    if (cliF.EditarCliente(cli))
-                    {
-                        ViewBag.Message = "Empleado Editado con Exito!";
-                    }
+                    cliF.EditarCliente(cli);
+                    
+                    // ViewBag.Message = "Cliente Editado con Exito!";
 
-                    else
-                    {
-                        ViewBag.Message = "Error al Editar empleado!";
-                    }
+                    TempData["msg"]="Cliente Editado con Exito";
+                                    
                 }
 
-                return View();
+                return RedirectToAction("EditarCliente");
             }
             catch
             {

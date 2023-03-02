@@ -336,6 +336,12 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\sweetalert\sweetalert2.all.js" />
+    <Content Include="Scripts\sweetalert\sweetalert2.all.min.js" />
+    <Content Include="Scripts\sweetalert\sweetalert2.css" />
+    <Content Include="Scripts\sweetalert\sweetalert2.js" />
+    <Content Include="Scripts\sweetalert\sweetalert2.min.css" />
+    <Content Include="Scripts\sweetalert\sweetalert2.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
