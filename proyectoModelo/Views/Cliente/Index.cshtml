@@ -5,48 +5,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container-fluid pt-3 pb-3">
+    <div class="row">
+        <div class="col text-center text-uppercase">
+            <h2 class="h3">Listado de Clientes</h2>
+        </div>
+    </div>
 
-<p>
-    @Html.ActionLink("Agregar Cliente", "AgregarCliente")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombres)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.apellidos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.sueldo)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombres)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellidos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sueldo)
-        </td>
-        <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })*@
-        </td>
-    </tr>
-}
+    <div class="row pt-2 pb-3">
+        <div class="col text-right">         
+            <button class="btn btn-success" type="button" onclick="location.href='@Url.Action("AgregarCliente", "Cliente")'">Agregar Cliente</button>
+        </div>
+    </div>
 
-</table>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                
+                    <table class="table  table-striped">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.nombres)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.apellidos)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.fechaString)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.sueldo)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nombres)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.apellidos)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fechaString)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.sueldo)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Editar", "EditarCliente", new { id = item.id }) |
+                                    @Html.ActionLink("Eliminar", "EliminarCliente", new { id = item.id })
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+

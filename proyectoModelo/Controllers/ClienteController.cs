@@ -9,12 +9,16 @@ namespace proyectoModelo.Controllers
 {
     public class ClienteController : Controller
     {
+        // Listado de clientes
         // GET: Cliente
         public ActionResult Index()
         {
-            return View();
+            ClienteUtility CliRepo = new ClienteUtility();
+            ModelState.Clear();
+            return View(CliRepo.obtenerCLientes());
         }
-
+      
+        //Funciones para agregar clientes        
         public ActionResult AgregarCliente()
         {
             return View();
@@ -45,10 +49,77 @@ namespace proyectoModelo.Controllers
             catch
             {
                 return View();
+                
             }
 
         }
 
 
+        //Funciones para Editar clientes
+
+        public ActionResult EditarCliente(int id)
+        {
+
+            ClienteUtility cli = new ClienteUtility();
+
+            return View(cli.obtenerCLientes().Find(x => x.id == id));
+        }
+
+        [HttpPost]
+        public ActionResult EditarCliente(int id, ClienteModelo cli)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+
+                    ClienteUtility cliF = new ClienteUtility();
+
+                    if (cliF.EditarCliente(cli))
+                    {
+                        ViewBag.Message = "Empleado Editado con Exito!";
+                    }
+
+                    else
+                    {
+                        ViewBag.Message = "Error al Editar empleado!";
+                    }
+                }
+
+                return View();
+            }
+            catch
+            {
+                return View();
+
+            }
+
+        }
+
+
+        //funcion para eliminar clientes
+        public ActionResult EliminarCliente(int id)
+        {
+
+            try { 
+
+                 ClienteUtility cli = new ClienteUtility();
+
+                if (cli.EliminarCliente(id))
+                {
+                    ViewBag.AlertMsg = "Datos del cliente eliminados";
+
+                }
+                return RedirectToAction("Index");
+
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
     }
-}
+
+    }

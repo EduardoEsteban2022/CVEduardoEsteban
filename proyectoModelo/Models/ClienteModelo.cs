@@ -22,7 +22,8 @@ namespace proyectoModelo.Models
         [Display(Name = "Fecha Nacimiento")]
         [Required(ErrorMessage = "La Fecha de nacimiento es requerido.")]
         public DateTime fecha { get; set; }
-        
+
+        [Display(Name = "Fecha Nacimiento")]
         public string fechaString { get; set; }
 
         [Display(Name = "Sueldo")]
