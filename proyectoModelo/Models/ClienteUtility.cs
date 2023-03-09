@@ -75,7 +75,7 @@ namespace proyectoModelo.Models
                 com.Parameters.AddWithValue("@id", cli.id);
                 com.Parameters.AddWithValue("@nombres", cli.nombres);
                 com.Parameters.AddWithValue("@apellidos", cli.apellidos);
-                com.Parameters.AddWithValue("@fecha", cli.fechaString);
+                com.Parameters.AddWithValue("@fecha", Convert.ToDateTime(cli.fechaString).ToString("dd/MM/yyyy"));
                 com.Parameters.AddWithValue("@sueldo",cli.sueldo);
 
                 con.Open();
@@ -178,7 +178,7 @@ namespace proyectoModelo.Models
                             id = Convert.ToInt32(dr["ID"]),
                             nombres = Convert.ToString(dr["NOMBRES"]),
                             apellidos = Convert.ToString(dr["APELLIDOS"]),
-                            fechaString = Convert.ToDateTime(dr["FECHA_NACIMIENTO"]).ToString("dd/MM/yyyy"),
+                            fechaString= Convert.ToDateTime(dr["FECHA_NACIMIENTO"]).ToString("dd/MM/yyyy"),
                             sueldo = Convert.ToDecimal(dr["SUELDO"])
                         }
                         );

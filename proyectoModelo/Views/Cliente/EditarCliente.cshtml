@@ -48,7 +48,7 @@
                             <div class="form-row">
                                 <div class="form-group col-12 col-md-6">
                                     @Html.LabelFor(model => model.fechaString, htmlAttributes: new { @class = "" })
-                                        @Html.EditorFor(model => model.fechaString, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.fechaString , new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.fechaString, "", new { @class = "text-danger" })                                    
                                 </div>
 
@@ -86,17 +86,12 @@
 <script src="~/Scripts/sweetalert/sweetalert2.min.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-      
+       var strValue = "@((string)ViewBag.msg)";
+    var strValueT = "@((string)ViewBag.tip)";
 
-    });
+    if ((strValue !== null && strValue !== '') && (strValueT !== null && strValueT !=="") ) {
+        swal(strValue, "presione ok para salir", strValueT);
 
-    var strValue = "@((string)ViewBag.msg)";
-    if(strValue!==null && strValue !==''){
-        swal(strValue,"presione ok para salir" , "success");
-       
     }
-
-
 
 </script>

@@ -45,7 +45,7 @@
                                     <div class="form-group col-12 col-md-6">
                                         @Html.LabelFor(model => model.fecha, htmlAttributes: new { @class = "" })
 
-                                        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.EditorFor(model => model.fecha, new { htmlAttributes = new { @class = "form-control", @type="date" } })
                                         @Html.ValidationMessageFor(model => model.fecha, "", new { @class = "text-danger" })
 
                                     </div>
@@ -79,3 +79,16 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/sweetalert/sweetalert2.min.js"></script>
+
+<script type="text/javascript">
+       var strValue = "@((string)ViewBag.msg)";
+    var strValueT = "@((string)ViewBag.tip)";
+
+    if ((strValue !== null && strValue !== '') && (strValueT !== null && strValueT !=="") ) {
+        swal(strValue, "presione ok para salir", strValueT);
+
+    }
+</script>

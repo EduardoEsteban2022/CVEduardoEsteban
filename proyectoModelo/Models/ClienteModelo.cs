@@ -11,12 +11,15 @@ namespace proyectoModelo.Models
         [Display(Name = "Id")]
         public int id { get; set; }
 
+
         [Display(Name = "Nombres")]
         [Required(ErrorMessage = "Los Nombres son requeridos.")]
+        [RegularExpression("^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$", ErrorMessage = "* Solo se permiten letras")]
         public string nombres { get; set; }
 
         [Display(Name = "Apellidos")]
         [Required(ErrorMessage = "Los Apellidos son requeridos.")]
+        [RegularExpression("^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$", ErrorMessage = "* Solo se permiten letras")]
         public string apellidos { get; set; }
 
         [Display(Name = "Fecha Nacimiento")]
@@ -26,6 +29,7 @@ namespace proyectoModelo.Models
         [Display(Name = "Fecha Nacimiento")]
         public string fechaString { get; set; }
 
+        
         [Display(Name = "Sueldo")]
         [Required(ErrorMessage = "El Sueldo es requerido.")]
         public decimal sueldo { get; set; }

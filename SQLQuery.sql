@@ -69,7 +69,7 @@ end
 go;
 
 -----SP para editar cliente
-create procedure SP_EditarCliente
+alter procedure SP_EditarCliente
 @id int,
 @nombres nvarchar(50),
 @apellidos nvarchar(50),
@@ -103,7 +103,7 @@ go;
 
 ------SP para eliminar clientes
 
-create procedure SP_EliminarCliente
+alter procedure SP_EliminarCliente
 @id int
 as
 begin
@@ -114,12 +114,13 @@ begin
 
 	begin try
 
-		delete T_cliente where idCliente=@id
-
+		delete from T_cliente where idCliente=@id
+		
+		Select 'El Cliente se elimino correctamente.'
+		
 		commit tran cliDele
 
 	end try
-
 	begin catch
 
 		select  'Ocurrio un Error: ' + ERROR_MESSAGE() + ' en la línea ' + CONVERT(NVARCHAR(255), ERROR_LINE() ) + '.'
@@ -128,3 +129,6 @@ begin
 	end catch
 
 end 
+
+
+exec SP_ObtenerClientes

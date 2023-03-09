@@ -17,10 +17,13 @@ namespace proyectoModelo.Controllers
             ModelState.Clear();
             return View(CliRepo.obtenerCLientes());
         }
-      
+
         //Funciones para agregar clientes        
         public ActionResult AgregarCliente()
         {
+            ViewBag.msg = TempData["msg"] as String;
+            ViewBag.tip = TempData["tip"] as String;
+
             return View();
         }
 
@@ -31,25 +34,38 @@ namespace proyectoModelo.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                   ClienteUtility cliU = new ClienteUtility();
 
-                    if (cliU.AgregarCliente(Cli))
+                    ClienteUtility cliU = new ClienteUtility();
+
+                    bool resp = cliU.AgregarCliente(Cli);
+
+                    if (resp == true)
                     {
-                        ViewBag.Message = "Empleado Agregado con Exito!";
+                        TempData["msg"] = "Cliente Creado con Exito";
+                        TempData["tip"] = "success";
+
+                        return RedirectToAction("AgregarCliente");
                     }
 
                     else
                     {
-                        ViewBag.Message = "Error al agregar empleado!";
+                        TempData["msg"] = "Error al crear Cliente";
+                        TempData["tip"] = "error";
+
+                        return RedirectToAction("AgregarCliente");
                     }
                 }
 
-                return View();
+                TempData["msg"] = "Error al crear Cliente";
+                TempData["tip"] = "error";
+                return RedirectToAction("AgregarCliente");
+              
+
             }
             catch
             {
                 return View();
-                
+
             }
 
         }
@@ -60,6 +76,7 @@ namespace proyectoModelo.Controllers
         public ActionResult EditarCliente(int id)
         {
             ViewBag.msg = TempData["msg"] as String;
+            ViewBag.tip = TempData["tip"] as String;
 
             ClienteUtility cli = new ClienteUtility();
 
@@ -76,15 +93,34 @@ namespace proyectoModelo.Controllers
 
                     ClienteUtility cliF = new ClienteUtility();
 
-                    cliF.EditarCliente(cli);
-                    
-                    // ViewBag.Message = "Cliente Editado con Exito!";
+                    bool resp = cliF.EditarCliente(cli);
 
-                    TempData["msg"]="Cliente Editado con Exito";
-                                    
+                    if (resp == true)
+                    {
+
+                        TempData["msg"] = "Cliente Editado con Exito";
+                        TempData["tip"] = "success";
+
+                        return RedirectToAction("EditarCliente");
+
+                    }
+
+
+                    else
+                    {
+                        TempData["msg"] = "Error al Editar Cliente";
+                        TempData["tip"] = "error";
+
+                        return RedirectToAction("EditarCliente");
+
+                    }
+
                 }
 
+                TempData["msg"] = "Error al Editar Cliente";
+                TempData["tip"] = "error";
                 return RedirectToAction("EditarCliente");
+
             }
             catch
             {
@@ -93,7 +129,7 @@ namespace proyectoModelo.Controllers
             }
 
         }
-
+    
 
         //funcion para eliminar clientes
         public ActionResult EliminarCliente(int id)
