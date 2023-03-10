@@ -24,7 +24,7 @@ As
 Begin
 	
 	--para que no muestre el msj de cuantas filas fueron afectadas	
-	SET NOCOUNT ON;
+	--SET NOCOUNT ON;
 
     Begin Tran Tadd
 
@@ -78,7 +78,7 @@ alter procedure SP_EditarCliente
 as
 begin
 
-	SET NOCOUNT ON;
+	--SET NOCOUNT ON;
 
 	begin tran cliEdit
 
@@ -108,19 +108,18 @@ alter procedure SP_EliminarCliente
 as
 begin
 
-	SET NOCOUNT ON;
+	--SET NOCOUNT ON;
 
 	begin tran cliDele
 
 	begin try
 
-		delete from T_cliente where idCliente=@id
-		
-		Select 'El Cliente se elimino correctamente.'
-		
+		delete T_cliente where idCliente=@id
+
 		commit tran cliDele
 
 	end try
+
 	begin catch
 
 		select  'Ocurrio un Error: ' + ERROR_MESSAGE() + ' en la línea ' + CONVERT(NVARCHAR(255), ERROR_LINE() ) + '.'
@@ -129,6 +128,3 @@ begin
 	end catch
 
 end 
-
-
-exec SP_ObtenerClientes

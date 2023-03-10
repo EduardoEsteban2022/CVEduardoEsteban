@@ -119,6 +119,7 @@ namespace proyectoModelo.Controllers
 
                 TempData["msg"] = "Error al Editar Cliente";
                 TempData["tip"] = "error";
+
                 return RedirectToAction("EditarCliente");
 
             }
@@ -135,17 +136,28 @@ namespace proyectoModelo.Controllers
         public ActionResult EliminarCliente(int id)
         {
 
-            try { 
+            try {
+                bool resp = false;
 
-                 ClienteUtility cli = new ClienteUtility();
 
-                if (cli.EliminarCliente(id))
+
+
+                if (resp == true)
                 {
-                    ViewBag.AlertMsg = "Datos del cliente eliminados";
 
+                    ClienteUtility cli = new ClienteUtility();
+                    
+                    if (cli.EliminarCliente(id, resp))
+                    {
+                        ViewBag.AlertMsg = "Datos del cliente eliminados";
+
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
-
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
