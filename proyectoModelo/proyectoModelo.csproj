@@ -201,7 +201,6 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\prueeeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -395,6 +394,7 @@
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\AgregarCliente.cshtml" />
     <Content Include="Views\Cliente\EditarCliente.cshtml" />
+    <Content Include="Views\Cliente\EliminarCliente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

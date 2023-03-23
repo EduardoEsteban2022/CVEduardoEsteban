@@ -90,7 +90,7 @@ namespace proyectoModelo.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
+                    
                     ClienteUtility cliF = new ClienteUtility();
 
                     bool resp = cliF.EditarCliente(cli);
@@ -130,33 +130,45 @@ namespace proyectoModelo.Controllers
             }
 
         }
-    
 
-        //funcion para eliminar clientes
+
         public ActionResult EliminarCliente(int id)
         {
 
-            try {
-                bool resp = false;
+            ViewBag.msg = TempData["msg"] as String;
+            ViewBag.tip = TempData["tip"] as String;
+
+            ClienteUtility cli = new ClienteUtility();
+
+            return View(cli.obtenerCLientes().Find(x => x.id == id));
+        }
 
 
 
 
-                if (resp == true)
+       /// funcion para eliminar clientes
+        [HttpPost, ActionName("EliminarCliente") ]
+        public ActionResult ConfirmarEliminarCliente(int id)
+        {
+
+            try
+            {
+
+                ClienteUtility cli = new ClienteUtility();
+
+                if (cli.EliminarCliente(id))
                 {
-
-                    ClienteUtility cli = new ClienteUtility();
-                    
-                    if (cli.EliminarCliente(id, resp))
-                    {
-                        ViewBag.AlertMsg = "Datos del cliente eliminados";
-
-                    }
-                    return RedirectToAction("Index");
+                    TempData["msg"] = "Datos del cliente eliminados";
+                    TempData["tip"] = "success";
+                    return RedirectToAction("EliminarCliente");
                 }
+
+
                 else
                 {
-                    return RedirectToAction("Index");
+                    TempData["msg"] = "Error al eliminar Cliente";
+                    TempData["tip"] = "error";
+                    return RedirectToAction("EliminarCliente");
                 }
             }
             catch

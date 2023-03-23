@@ -107,7 +107,7 @@ namespace proyectoModelo.Models
 
 
         //metodo eliminar cliente
-        public bool EliminarCliente(int id, bool resp)
+        public bool EliminarCliente(int id)
         {
             conexion();
             SqlCommand com = new SqlCommand("SP_EliminarCliente",con);
@@ -115,25 +115,19 @@ namespace proyectoModelo.Models
 
             try
             {
-                if (resp == true)
-                {
+               
+               com.Parameters.AddWithValue("@id", id);
+               con.Open();
 
-                    com.Parameters.AddWithValue("@id", id);
-                    con.Open();
+               int i = com.ExecuteNonQuery();
 
-                    int i = com.ExecuteNonQuery();
+                con.Close();
 
-                    con.Close();
-
-                    if (i >= 1)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
+                if (i >= 1)
+                 {
+                   return true;
+                 }
+                             
                 else
                 {
                     return false;
@@ -148,9 +142,7 @@ namespace proyectoModelo.Models
             {
                 con.Close();
             }
-
-
-
+            
         }
 
 

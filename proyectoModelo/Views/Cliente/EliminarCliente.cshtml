@@ -1,0 +1,106 @@
+﻿@model proyectoModelo.Models.ClienteModelo
+
+@{
+    ViewBag.Title = "EliminarCliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Scripts/sweetalert/sweetalert2.css" rel="stylesheet" />
+
+<section>
+    <div class="container">
+        <div class="row pt-3 pb-3">
+            <div class="col text-center text-uppercase">
+                <h2 class="h3">Eliminar Cliente</h2>
+            </div>
+        </div>
+
+
+        <div class="row pt-4">
+            <div class="col-lg-10 offset-1">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id)
+
+                    <div class="card shadow p-3 mb-5 bg-white rounded">
+                        <div class="card-body ">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.nombres)
+                                  
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.nombres)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.apellidos)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.apellidos)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.fecha)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.fechaString)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.sueldo)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.sueldo)
+                                </dd>
+
+                            </dl>
+
+                            <div class="row">
+                                <div class="col text-center text-uppercase">
+                                    <h5>¿Esta seguro de Eliminar este cliente?</h5>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col text-center">
+                                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+
+            <p>
+                @Html.ActionLink("Regresar al Listado", "Index")
+            </p>
+
+
+
+        </div>
+    </section>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/sweetalert/sweetalert2.min.js"></script>
+
+    <script type="text/javascript">
+        var strValue = "@((string)ViewBag.msg)";
+        var strValueT = "@((string)ViewBag.tip)";
+
+        if ((strValue !== null && strValue !== '') && (strValueT !== null && strValueT !== "")) {
+            swal(strValue, "presione ok para salir", strValueT);
+
+        }
+
+    </script>
