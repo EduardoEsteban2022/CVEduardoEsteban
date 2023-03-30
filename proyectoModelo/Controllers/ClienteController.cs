@@ -1,6 +1,10 @@
-﻿using proyectoModelo.Models;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using proyectoModelo.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -178,6 +182,41 @@ namespace proyectoModelo.Controllers
         }
 
 
-    }
+
+
+        public ActionResult GenerarPdf()
+        {
+            List<ClienteModelo> dt = new List<ClienteModelo>();
+            ClienteUtility f = new ClienteUtility();
+
+            dt = f.obtenerCLientes();
+
+
+            ReportDocument report = new ReportDocument();
+            report.Load(Server.MapPath("~/Rpt/Clientes.rpt"));
+            report.SetDataSource(dt);
+
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
+
+            // Pasar los parámetros necesarios al procedimiento almacenado
+            //report.SetParameterValue("myParameter", "myValue");
+
+            // Ejecutar el procedimiento almacenado y obtener los datos resultantes
+
+
+            Stream stream = report.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
+
+            stream.Seek(0, SeekOrigin.Begin);
+
+            return File(stream, "application/pdf", "CustomerList.pdf");
+
+        }
+
+
+
+
+        }
 
     }

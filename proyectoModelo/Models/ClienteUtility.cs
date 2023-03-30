@@ -198,6 +198,50 @@ namespace proyectoModelo.Models
             }
         }
 
+        //Metodo Obtener Cliente
+        public List<ClienteModelo> obtenerCLientesR()
+        {
+            List<ClienteModelo> CliList = new List<ClienteModelo>();
+            conexion();
+            
+            SqlCommand com = new SqlCommand("SP_ObtenerClientes", con);
+            com.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+
+                SqlDataAdapter da = new SqlDataAdapter(com);
+                DataSet dataset = new DataSet();
+
+                // Llena el DataSet con los datos recuperados por el SqlDataAdapter
+                da.Fill(dataset);
+                List<ClienteModelo> mo = new List<ClienteModelo>();
+
+                foreach (DataRow dr in dataset.Tables[0].Rows)
+                {
+
+                    ClienteModelo m = new ClienteModelo();
+                    m.id = Convert.ToInt32(dr["ID"]);
+                    m.nombres = Convert.ToString(dr["NOMBRES"]);
+                    m.apellidos = Convert.ToString(dr["APELLIDOS"]);
+                    m.fechaString = Convert.ToDateTime(dr["FECHA_NACIMIENTO"]).ToString("dd/MM/yyyy");
+                    m.sueldo = Convert.ToDecimal(dr["SUELDO"]);
+                    mo.Add(m);   
+                }
+
+                return CliList;
+            }
+
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                return null;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
 
     }
 }

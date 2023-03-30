@@ -14,8 +14,10 @@
 
 
     <div class="row pt-2 pb-3">
-        <div class="col text-right">         
+        <div class="col text-left">
             <button class="btn btn-success" type="button" onclick="location.href='@Url.Action("AgregarCliente", "Cliente")'">Agregar Cliente</button>
+            <button class="btn btn-danger" type="button" onclick="location.href='@Url.Action("GenerarPdf", "Cliente")'">Descargar Pdf</button>
+
         </div>
     </div>
 
@@ -23,49 +25,51 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow p-3 mb-5 bg-white rounded">
-                
-                    <table class="table  table-striped">
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.nombres)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.apellidos)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.fechaString)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.sueldo)
-                            </th>
-                            <th></th>
-                        </tr>
 
-                        @foreach (var item in Model)
+                <table class="table  table-striped">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.nombres)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.apellidos)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.fechaString)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.sueldo)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.nombres)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.apellidos)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.fechaString)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.sueldo)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Editar", "EditarCliente", new { id = item.id }) |
-                                    @Html.ActionLink("Eliminar", "EliminarCliente", new { id = item.id })
-                                </td>
-                            </tr>
-                        }
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nombres)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.apellidos)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fechaString)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.sueldo)
+                            </td>
+                            <td>
+                                @*  @Html.ActionLink("Editar", "EditarCliente", new { id = item.id }) |*@
+                                <button class="btn btn-warning" type="button" onclick="location.href='@Url.Action("EditarCliente", "Cliente", new { id = item.id })'">Editar</button>
+                                @*  @Html.ActionLink("Eliminar", "EliminarCliente", new { id = item.id })*@
+                                <button class="btn btn-danger" type="button" onclick="location.href='@Url.Action("EliminarCliente", "Cliente",new { id = item.id })'">Eliminar</button>
+                            </td>
+                        </tr>
+                    }
 
-                    </table>
-                </div>
+                </table>
             </div>
         </div>
     </div>
+</div>
 
